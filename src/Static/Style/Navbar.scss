@@ -1,0 +1,212 @@
+.header {
+    padding: 15px;
+    display: grid;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    box-sizing: border-box;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+
+    .title-navbar {
+        font-size: 24px;
+        color: #333;
+        font-weight: bold;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: color 0.3s ease;
+        &:hover {
+            color: #555;
+        }
+
+        .logoNavBar{
+            width: 5.5em;
+        }
+    }
+
+    .navbar {
+        color: #777;
+        .nav-links {
+            padding: 15px;
+            display: grid;
+            align-items: center;
+            justify-content: space-around;
+            width: 100%;
+            box-sizing: border-box;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            justify-items: center;
+            list-style: none;
+            gap: 1em;
+
+            li {
+                height: 3em;
+                width: 6em;
+                position: relative;
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-decoration: none;
+                    color: #777;
+                    transition: color 0.3s ease;
+                    height: 100%;
+
+                    &:hover {
+                        color: #555;
+                    }
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                        width: 0;
+                        height: 2px;
+                        background-color: #555;
+                        transition: width 0.3s ease;
+                    }
+
+                    &:hover::after {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+
+    .navBarSocial{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+        gap: 10px;
+
+        .iconNav{
+            color: black;
+
+            .iconNavBar{
+                font-size: 30px;
+            }
+        }
+    }
+}
+
+/* Estilos para el menú burger y el background */
+.btnMenuBurger, .background {
+    display: none;
+}
+
+@media screen and (max-width: 767px) {
+    .header, .title-navbar, .navBarSocial {
+        display: none;
+    }
+
+    .btnMenuBurger {
+        display: block;
+        cursor: pointer;
+        padding: 10px;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        font-size: 24px;
+        color: #777;
+        background-image: url("../../Static/Icon/menuBurger.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: 4;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 88px;
+        height: 88px;
+
+        &.show {
+            background-image: url("../../Static/Icon/close.svg");
+            background-size: 2em;
+            z-index: 3;
+        }
+    }
+
+    .background {
+        display: none; // Oculto por defecto
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 2;
+        transition-duration: 2s;
+
+        &.show {
+            display: block;
+            background-color: rgba(0, 0, 0, 0.8); /* Mayor opacidad para mejorar el contraste */
+            z-index: 2;
+            width: 100vw;
+            height: 100vh;
+        }
+    }
+
+    .header {
+        &.show{
+            display: flex;
+            .navBarSocial{
+                display: none;
+            }
+        }
+    }
+
+    .header .navbar .nav-links {
+        display: none; // Oculto por defecto en pantallas pequeñas
+        flex-direction: column;
+        position: fixed;
+        top: 88px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 88px);
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        z-index: 3;
+
+        &.show {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px; /* Ajusta la separación entre enlaces */
+            font-size: 18px;
+        }
+
+        li {
+            width: 100%;
+            text-align: center;
+            margin: 10px 0;
+            position: relative;
+
+            a{
+                color: white;
+                transition: color 0.3s ease;
+                    height: 100%;
+
+                    &:hover {
+                        color: #555;
+                    }
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                        width: 0;
+                        height: 2px;
+                        background-color: #ffffff;
+                        transition: width 0.3s ease;
+                    }
+
+                    &:hover::after {
+                        width: 100%;
+                    }
+            }
+        }
+    }
+}
