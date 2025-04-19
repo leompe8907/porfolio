@@ -1,10 +1,8 @@
 import './App.css';
 import {BrowserRouter, Routes, Route } from "react-router"
-import Centro from './Components/Centro.jsx';
-import Navbar from './Components/Navbar.jsx';
 import Home from './Page/Home.jsx';
 import About from './Page/About.jsx';
-import AboutMe from './Components/AboutMe.jsx';
+import Contact from './Page/Contact.jsx';
 
 function App() {
   return (
@@ -13,6 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/about" element={<About/>} />
+          <Route path="/contact" element={<Contact/>} />
         </Routes>
       </BrowserRouter>
     </div>
