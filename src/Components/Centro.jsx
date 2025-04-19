@@ -1,15 +1,31 @@
 import React from "react";
-import "../Static/Style/Centro.scss"
+import "../Static/Style/Centro.scss";
 
 function Centro() {
   return (
-    <div className="intro">
-      <div class="introText">
-        <div> <p> Hola, Soy <strong> Leonard</strong>.{" "} </p></div>
-        <div> <p><strong>Bienvenidos</strong> a mi pequeño mundo de programación. </p></div>
-        <div> <a href="CV_Leonard_Amaya_Daza.pdf" download> <p> Descargar CV</p> </a> </div>
+    <section className="hero" aria-labelledby="hero-heading">
+      <div className="hero-content">
+        <h1 id="hero-heading" className="hero-title">
+          <span className="hero-greeting">Hola, Soy</span>
+          <span className="hero-name">Leonard Amaya</span>
+        </h1>
+        
+        <p className="hero-subtitle">
+          Bienvenidos a mi <strong>espacio digital</strong> de desarrollo y creatividad
+        </p>
+        
+        <div className="hero-cta">
+          <a 
+            href="CV_Leonard_Amaya_Daza.pdf" 
+            download="CV_Leonard_Amaya_Daza.pdf"
+            className="cv-button"
+          >
+            Descargar CV
+            <span className="download-icon" aria-hidden="true">↓</span>
+          </a>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
 

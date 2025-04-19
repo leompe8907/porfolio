@@ -1,73 +1,109 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import GitHubIcon from '@mui/icons-material/GitHub';
-
-import { useNavigate } from 'react-router-dom';
-
-import L from "../Static/Img/LD.png"
-
+import { Instagram, LinkedIn, GitHub } from '@mui/icons-material';
+import L from "../Static/Img/LD.png";
 import "../Static/Style/Navbar.scss";
 
 export default function Navbar() {
   const [isNavBarVisible, setIsNavBarVisible] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const lastScrollTop = useRef(0);
-  const navLinksRef = useRef(null);
+  const navbarRef = useRef(null);
 
-  const navigate = useNavigate();
-
-  // Toggle menu on click
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen); // Cambiamos el estado para abrir/cerrar el menú
-  };
-
-  // Toggle navbar visibility on scroll
-  const handleScroll = () => {
+  // Debounced scroll handler
+  const handleScroll = useCallback(() => {
     const { pageYOffset } = window;
-    if (pageYOffset > lastScrollTop.current) {
+    if (pageYOffset > lastScrollTop.current && pageYOffset > 100) {
       setIsNavBarVisible(false);
-    } else if (pageYOffset < lastScrollTop.current) {
+    } else {
       setIsNavBarVisible(true);
     }
     lastScrollTop.current = pageYOffset;
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const debouncedScroll = () => {
+      let ticking = false;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', debouncedScroll);
+    return () => window.removeEventListener('scroll', debouncedScroll);
+  }, [handleScroll]);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(prev => !prev);
+    document.body.style.overflow = isMenuOpen ? 'auto' : 'hidden';
+  };
+
   return (
-    <>
-      <div className={`btnMenuBurger ${isMenuOpen ? 'show' : ''}`} onClick={toggleMenu}></div>
-      <div className={`background ${isMenuOpen ? 'show' : ''}`}></div>
-      <div className={`header ${isNavBarVisible ? '' : 'hide'} ${isMenuOpen ? 'show' : ''}`}>
-        <div className="title-navbar">
-          <img src={L} alt='Logo' className='logoNavBar'/>
-        </div>
-        <nav className="navbar">
-            <ul className={`nav-links ${isMenuOpen ? 'show' : ''}`} ref={navLinksRef}>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/projects">Projects</Link></li>
-              <li><Link to="/about">About</Link></li>
-              <li><Link to="/contact">Contact</Link></li>
-            </ul>
+    <header 
+      ref={navbarRef}
+      className={`header ${!isNavBarVisible ? 'hide' : ''} ${isMenuOpen ? 'show' : ''}`}
+      aria-label="Main navigation"
+    >
+      <button 
+        className={`menu-toggle ${isMenuOpen ? 'show' : ''}`}
+        onClick={toggleMenu}
+        aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+        aria-expanded={isMenuOpen}
+      >
+        <span className="menu-icon" />
+      </button>
+
+      <div className="overlay" onClick={toggleMenu} />
+
+      <div className="navbar-content">
+        <Link to="/" className="logo-link">
+          <img src={L} alt="Leonardo Mayalogo" className="logo" />
+        </Link>
+
+        <nav className="main-nav">
+          <ul className={`nav-list ${isMenuOpen ? 'show' : ''}`}>
+            {[
+              { path: "/", label: "Home" },
+              { path: "/projects", label: "Projects" },
+              { path: "/about", label: "About" },
+              { path: "/contact", label: "Contact" }
+            ].map((item) => (
+              <li key={item.path}>
+                <Link 
+                  to={item.path} 
+                  className="nav-link"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </nav>
-        <div className='navBarSocial'>
-          <a className='iconNav' href="https://www.instagram.com/leompe/">
-            <InstagramIcon className='iconNavBar'/>
-          </a>
-          <a className='iconNav' href="https://www.linkedin.com/in/leonardamaya/">
-            <LinkedInIcon className='iconNavBar'/>
-          </a>
-          <a className='iconNav' href="https://github.com/leompe8907">
-            <GitHubIcon className='iconNavBar'/>
-          </a>
+
+        <div className="social-links">
+          {[
+            { icon: <Instagram />, url: "https://www.instagram.com/leompe/" },
+            { icon: <LinkedIn />, url: "https://www.linkedin.com/in/leonardamaya/" },
+            { icon: <GitHub />, url: "https://github.com/leompe8907" }
+          ].map((social, index) => (
+            <a 
+              key={index}
+              href={social.url} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="social-link"
+              aria-label={`${social.icon.type.name} profile`}
+            >
+              {social.icon}
+            </a>
+          ))}
         </div>
       </div>
-    </>
-  )
+    </header>
+  );
 }
-

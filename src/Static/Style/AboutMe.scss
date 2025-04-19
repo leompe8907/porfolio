@@ -1,0 +1,113 @@
+// Variables
+$primary-color: #2d2d2d;
+$accent-color: #535bf2;
+$text-color: #444;
+$light-bg: #f9f9f9;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-section {
+  background-color: $light-bg;
+  overflow: hidden; /* Elimina cualquier scroll no deseado */
+  height: 100vh; /* Ocupa toda la altura visible */
+  padding: 2rem;
+  box-sizing: border-box; /* Incluye padding en el cálculo del tamaño */
+  
+  .about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    height: 100%;
+    margin: 0 auto;
+    
+    @media (min-width: 992px) {
+      grid-template-columns: 350px 1fr;
+    }
+  }
+  
+  .profile-photo-container {
+    position: relative;
+    margin: 0 auto;
+    padding: 0 2rem;
+    transform-style: preserve-3d;
+    padding-top: 5rem;
+    padding-bottom: 4rem;
+    flex: 1 1;
+    animation: fadeIn 0.8s ease-out forwards;
+    
+    .profile-photo {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      aspect-ratio: 1/1;
+      object-fit: cover;
+    }
+    
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+  }
+  
+  .about-content {
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: $primary-color;
+      
+      .highlight {
+        color: $accent-color;
+      }
+    }
+    
+    .subsection-title {
+      font-size: 1.3rem;
+      color: $primary-color;
+      margin: 1.5rem 0 0.8rem;
+    }
+    
+    .about-text {
+      line-height: 1.8;
+      color: $text-color;
+      
+      .intro-paragraph {
+        font-size: 1.1rem;
+        font-weight: 500;
+      }
+      
+      .experience-list {
+        padding-left: 1.2rem;
+        margin: 1rem 0;
+        
+        li {
+          margin-bottom: 0.5rem;
+          position: relative;
+          
+          &::before {
+            content: "▹";
+            position: absolute;
+            left: -1rem;
+            color: $accent-color;
+          }
+        }
+      }
+      
+      .current-focus {
+        background: rgba($accent-color, 0.05);
+        padding: 1.2rem;
+        border-radius: 8px;
+        margin-top: 2rem;
+        border-left: 3px solid $accent-color;
+      }
+    }
+  }
+}

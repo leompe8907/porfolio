@@ -1,14 +1,117 @@
-.intro{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+// Variables
+$primary-color: #2d2d2d;
+$accent-color: #535bf2;
+$text-color: #333;
+$white: #fff;
+$transition-speed: 0.3s;
 
-    .introText{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        font-family: 'Raleway', sans-serif;
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin transition($property: all) {
+  transition: $property $transition-speed ease;
+}
+
+// Base Styles
+.hero {
+  @include flex-center;
+  min-height: 100vh;
+  background-color: $white;
+  position: relative;
+  overflow: hidden;
+
+  &-content {
+    max-width: 800px;
+    text-align: center;
+    padding: 2rem;
+    z-index: 2;
+  }
+
+  &-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    color: $primary-color;
+  }
+
+  &-greeting {
+    display: block;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
+
+  &-name {
+    display: block;
+    font-weight: 700;
+    color: $accent-color;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: $accent-color;
     }
+  }
+
+  &-subtitle {
+    font-family: 'Raleway', sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    margin-bottom: 2.5rem;
+    color: $text-color;
+    line-height: 1.6;
+  }
+
+  .cv-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 2rem;
+    background-color: $accent-color;
+    color: $white;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    @include transition;
+    
+    &:hover,
+    &:focus {
+      background-color: darken($accent-color, 10%);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .download-icon {
+      @include transition;
+    }
+    
+    &:hover .download-icon {
+      transform: translateY(3px);
+    }
+  }
+}
+
+// Responsive Adjustments
+@media (max-width: 768px) {
+  .hero {
+    text-align: center;
+    
+    &-content {
+      padding: 1rem;
+    }
+    
+    &-name::after {
+      bottom: -5px;
+      width: 60px;
+    }
+  }
 }

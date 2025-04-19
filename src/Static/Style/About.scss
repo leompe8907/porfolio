@@ -1,0 +1,68 @@
+// Variables
+$page-padding: 2rem;
+$max-content-width: 1400px;
+$section-spacing: 4rem;
+
+// Mixins
+@mixin page-container {
+  max-width: $max-content-width;
+  margin: 0 auto;
+  padding: 0 $page-padding;
+}
+
+.about-page {
+  display: flex;
+  flex-direction: column;
+  perspective: 1px;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  
+  // Fondo con textura sutil
+  background-color: #f9f9f9;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(195, 207, 226, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(195, 207, 226, 0.1) 0%, transparent 20%);
+  
+  .about-content {
+    @include page-container;
+    transform-style: preserve-3d;
+    padding-top: 4rem;
+    padding-bottom: $section-spacing;
+    flex: 1;
+    
+    // Animación de entrada
+    animation: fadeIn 0.8s ease-out forwards;
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .about-page {
+    .about-content {
+      padding-top: 5rem;
+      padding-bottom: 2rem;
+    }
+  }
+}
+
+// Efecto de tema oscuro
+@media (prefers-color-scheme: dark) {
+  .about-page {
+    background-color: #121212;
+    background-image: 
+      radial-gradient(circle at 10% 20%, rgba(50, 50, 50, 0.2) 0%, transparent 20%),
+      radial-gradient(circle at 90% 80%, rgba(50, 50, 50, 0.2) 0%, transparent 20%);
+  }
+}
