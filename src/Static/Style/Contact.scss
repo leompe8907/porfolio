@@ -1,0 +1,36 @@
+// Variables
+$page-padding: 2rem;
+$content-max-width: 1200px;
+
+.contact-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f6f7fc 0%, #e9ecf5 100%);
+
+  .contact-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $page-padding;
+    padding-top: 6rem; // Espacio para el navbar
+  }
+}
+
+// Dark Mode
+@media (prefers-color-scheme: dark) {
+  .contact-page {
+    background: linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .contact-page {
+    .contact-content {
+      padding: 1rem;
+      padding-top: 5rem;
+    }
+  }
+}

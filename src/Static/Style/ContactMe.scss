@@ -1,15 +1,16 @@
 // Variables
-$primary-color: #007bff;
-$secondary-color: #00bfff;
-$error-color: #ff4444;
-$success-color: #4caf50;
-$text-color: #333;
-$light-gray: #f5f5f5;
-$border-radius: 12px;
+$primary-color: #4361ee;
+$secondary-color: #3a0ca3;
+$success-color: #4cc9f0;
+$error-color: #f72585;
+$text-color: #2b2d42;
+$light-bg: #f8f9fa;
+$border-radius: 8px;
+$box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 
 // Mixins
-@mixin transition($property: all) {
-  transition: $property 0.3s ease;
+@mixin transition($property: all, $duration: 0.3s) {
+  transition: $property $duration cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .contact-container {
@@ -18,154 +19,216 @@ $border-radius: 12px;
   align-items: center;
   min-height: 100vh;
   padding: 2rem;
-  background-color: #f9f9f9;
-  background-image: 
-    radial-gradient(circle at 10% 20%, rgba(195, 207, 226, 0.1) 0%, transparent 20%),
-    radial-gradient(circle at 90% 80%, rgba(195, 207, 226, 0.1) 0%, transparent 20%);
+  background: linear-gradient(135deg, #f6f7fc 0%, #e9ecf5 100%);
+  font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+}
+
+.contact-card {
+  width: 100%;
+  max-width: 600px;
+  background: white;
+  border-radius: $border-radius + 4;
+  box-shadow: $box-shadow;
+  overflow: hidden;
+}
+
+.contact-header {
+  padding: 2rem 2rem 1rem;
+  background: linear-gradient(to right, $primary-color, $secondary-color);
+  color: white;
+  text-align: center;
+
+  h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  p {
+    margin: 0.5rem 0 0;
+    opacity: 0.9;
+    font-size: 0.95rem;
+  }
 }
 
 .contact-form {
-  width: 100%;
-  max-width: 600px;
-  padding: 2.5rem;
-  background: #ffffff;
-  border-radius: $border-radius;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  @include transition;
-
-  h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: $text-color;
-  }
-
-  .form-description {
-    text-align: center;
-    color: lighten($text-color, 20%);
-    margin-bottom: 2rem;
-    line-height: 1.5;
-  }
+  padding: 2rem;
 
   .form-group {
-    margin-bottom: 1.5rem;
+    position: relative;
+    margin-bottom: 1.8rem;
 
-    label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-      color: $text-color;
+    .input-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: lighten($text-color, 30%);
+      z-index: 2;
+      @include transition;
+
+      .icon {
+        font-size: 1.1rem;
+      }
     }
 
-    input,
-    textarea {
-      width: 100%;
-      padding: 1rem;
-      border: 1px solid #ddd;
-      border-radius: $border-radius - 4;
-      background: $light-gray;
-      font-size: 1rem;
+    input, textarea {
+      width: 90%;
+      padding: 12px 12px 12px 40px;
+      border: 1px solid #e0e0e0;
+      border-radius: $border-radius;
+      background: $light-bg;
+      font-size: 0.95rem;
+      color: $text-color;
       @include transition;
 
       &:focus {
-        border-color: $primary-color;
-        box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
-        background: #fff;
         outline: none;
+        border-color: $primary-color;
+        background: white;
+        box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
+
+        ~ .input-icon {
+          color: $primary-color;
+        }
+
+        ~ .input-border, ~ .textarea-border {
+          width: 100%;
+        }
       }
 
       &::placeholder {
-        color: #999;
+        color: lighten($text-color, 40%);
       }
     }
 
-    textarea {
-      min-height: 150px;
-      resize: vertical;
+    .input-border, .textarea-border {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: $primary-color;
+      @include transition(width);
+    }
+
+    &.textarea-group {
+      textarea {
+        padding: 12px;
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      .textarea-border {
+        bottom: -1px;
+      }
     }
   }
 
-  button {
+  .submit-btn {
     width: 100%;
-    padding: 1rem;
+    padding: 14px;
     background: linear-gradient(to right, $primary-color, $secondary-color);
     color: white;
     border: none;
     border-radius: $border-radius;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 500;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     @include transition;
 
     &:hover {
-      background: linear-gradient(to right, darken($primary-color, 10%), darken($secondary-color, 10%));
+      background: linear-gradient(to right, darken($primary-color, 5%), darken($secondary-color, 5%));
       transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba($primary-color, 0.2);
     }
 
     &:disabled {
       background: #ccc;
       cursor: not-allowed;
       transform: none;
+      box-shadow: none;
+    }
+
+    .btn-icon {
+      font-size: 1.1rem;
     }
   }
 
-  .alert {
-    padding: 1rem;
+  .status-message {
     margin-top: 1.5rem;
-    border-radius: $border-radius - 4;
-    text-align: center;
-    font-weight: 500;
+    padding: 12px;
+    border-radius: $border-radius;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    @include transition;
 
     &.success {
-      background-color: rgba($success-color, 0.1);
-      color: darken($success-color, 20%);
-      border: 1px solid $success-color;
+      background: rgba($success-color, 0.1);
+      color: darken($success-color, 25%);
     }
 
     &.error {
-      background-color: rgba($error-color, 0.1);
-      color: darken($error-color, 20%);
-      border: 1px solid $error-color;
+      background: rgba($error-color, 0.1);
+      color: darken($error-color, 15%);
+    }
+
+    .status-icon {
+      font-size: 1.2rem;
     }
   }
 }
 
-// Dark mode
-@media (prefers-color-scheme: dark) {
-  .contact-container {
-    background-color: #121212;
-  }
-
-  .contact-form {
-    background: #1e1e1e;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-
-    h2, label {
-      color: #f0f0f0;
-    }
-
-    .form-group {
-      input,
-      textarea {
-        background: #2d2d2d;
-        border-color: #444;
-        color: #fff;
-
-        &:focus {
-          background: #333;
-        }
-      }
-    }
-  }
-}
-
-// Responsive
+// Responsive Design
 @media (max-width: 768px) {
   .contact-container {
     padding: 1rem;
   }
 
+  .contact-header {
+    padding: 1.5rem 1rem 0.8rem;
+  }
+
   .contact-form {
     padding: 1.5rem;
+  }
+}
+
+// Dark Mode
+@media (prefers-color-scheme: dark) {
+  .contact-container {
+    background: linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
+  }
+
+  .contact-card {
+    background: #1e1e1e;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .contact-form {
+    input, textarea {
+      background: #2d2d2d;
+      border-color: #444;
+      color: #f0f0f0;
+
+      &:focus {
+        background: #333;
+      }
+
+      &::placeholder {
+        color: #777;
+      }
+    }
+
+    .input-icon {
+      color: #777;
+    }
   }
 }

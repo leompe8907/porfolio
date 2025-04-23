@@ -14,9 +14,7 @@ function About() {
         <meta name="description" content="Información sobre Leonard Amaya, Desarrollador Full Stack especializado en Python, Django y React" />
         <meta property="og:title" content="Leonard Amaya - Portafolio Profesional" />
         <meta property="og:description" content="Conoce más sobre mi experiencia como desarrollador Full Stack" />
-        {/* Otros meta tags para SEO */}
       </Helmet>
-      
       <Navbar/>
       <AboutMe/>
     </div>

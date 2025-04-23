@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import emailjs from "emailjs-com";
+import { FiSend, FiUser, FiMail, FiMessageSquare, FiCheckCircle, FiAlertCircle } from "react-icons/fi";
 import "../Static/Style/ContactMe.scss";
 
 export default function ContactMe() {
@@ -35,75 +36,91 @@ export default function ContactMe() {
 
   return (
     <div className="contact-container">
-      <form ref={form} onSubmit={sendEmail} className="contact-form">
-        <h2>Contáctame</h2>
-        <p className="form-description">
-          ¿Tienes un proyecto en mente? Escríbeme y hablemos sobre cómo puedo ayudarte.
-        </p>
-
-        <div className="form-group">
-          <label htmlFor="name">Tu nombre</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Ej: Juan Pérez"
-            required
-            minLength={3}
-          />
+      <div className="contact-card">
+        <div className="contact-header">
+          <h2>Contacto Profesional</h2>
+          <p>Complete el formulario y me pondré en contacto lo antes posible</p>
         </div>
 
-        <div className="form-group">
-          <label htmlFor="email">Correo electrónico</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Ej: juan@ejemplo.com"
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="title">Asunto</label>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            placeholder="Ej: Consulta sobre desarrollo web"
-            required
-            minLength={5}
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="message">Tu mensaje</label>
-          <textarea
-            id="message"
-            name="message"
-            placeholder="Describe tu proyecto o consulta..."
-            required
-            minLength={10}
-            rows={5}
-          />
-        </div>
-
-        <button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? "Enviando..." : "Enviar mensaje"}
-        </button>
-
-        {submitStatus === "success" && (
-          <div className="alert success">
-            ¡Mensaje enviado correctamente! Me pondré en contacto pronto.
+        <form ref={form} onSubmit={sendEmail} className="contact-form">
+          <div className="form-group">
+            <div className="input-icon">
+              <FiUser className="icon" />
+            </div>
+            <input
+              type="text"
+              name="name"
+              placeholder="Nombre completo"
+              required
+              minLength={3}
+            />
+            <span className="input-border"></span>
           </div>
-        )}
 
-        {submitStatus === "error" && (
-          <div className="alert error">
-            Hubo un error al enviar el mensaje. Por favor inténtalo nuevamente.
+          <div className="form-group">
+            <div className="input-icon">
+              <FiMail className="icon" />
+            </div>
+            <input
+              type="email"
+              name="email"
+              placeholder="Correo electrónico"
+              required
+            />
+            <span className="input-border"></span>
           </div>
-        )}
-      </form>
+
+          <div className="form-group">
+            <div className="input-icon">
+              <FiMessageSquare className="icon" />
+            </div>
+            <input
+              type="text"
+              name="title"
+              placeholder="Asunto del mensaje"
+              required
+              minLength={5}
+            />
+            <span className="input-border"></span>
+          </div>
+
+          <div className="form-group textarea-group">
+            <textarea
+              name="message"
+              placeholder="Su mensaje..."
+              required
+              minLength={10}
+              rows={5}
+            ></textarea>
+            <span className="textarea-border"></span>
+          </div>
+
+          <button type="submit" disabled={isSubmitting} className="submit-btn">
+            {isSubmitting ? (
+              "Enviando..."
+            ) : (
+              <>
+                <FiSend className="btn-icon" />
+                Enviar Mensaje
+              </>
+            )}
+          </button>
+
+          {submitStatus === "success" && (
+            <div className="status-message success">
+              <FiCheckCircle className="status-icon" />
+              <span>¡Mensaje enviado con éxito! Le responderé pronto.</span>
+            </div>
+          )}
+
+          {submitStatus === "error" && (
+            <div className="status-message error">
+              <FiAlertCircle className="status-icon" />
+              <span>Error al enviar. Por favor, inténtelo de nuevo.</span>
+            </div>
+          )}
+        </form>
+      </div>
     </div>
   );
 }

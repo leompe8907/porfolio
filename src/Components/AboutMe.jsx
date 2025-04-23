@@ -6,7 +6,7 @@ import "../Static/Style/AboutMe.scss"
 
 function AboutMe() {
   const skills = [
-    'Python', 'Django', 'React', 'PostgreSQL', 
+    'Python', 'Django', 'React', 'PostgreSQL',
     'Chart.js', 'REST APIs', 'Docker', 'Git'
   ];
 
@@ -14,8 +14,8 @@ function AboutMe() {
     <section className="about-section" aria-labelledby="about-heading">
       <div className="about-container">
         <div className="profile-photo-container">
-          <img 
-            src={ProfilePhoto} 
+          <img
+            src={ProfilePhoto}
             alt="Leonard Amaya - Desarrollador Full Stack"
             className="profile-photo"
           />
@@ -38,7 +38,7 @@ function AboutMe() {
             
             <h3 className="subsection-title">Mi Experiencia</h3>
             <p>
-              En mi rol en <strong>Bromteck</strong>, lideré el desarrollo de una aplicación de telemetría completa:
+              En mi rol en <strong>Bromteck</strong>, lidero y desarrollo una aplicación de telemetría
             </p>
             <ul className="experience-list">
               <li>API REST con Django y PostgreSQL</li>
