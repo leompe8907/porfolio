@@ -67,10 +67,10 @@ export default function Navbar() {
         <nav className="main-nav">
           <ul className={`nav-list ${isMenuOpen ? 'show' : ''}`}>
             {[
-              { path: "/", label: "Home" },
-              { path: "/projects", label: "Projects" },
-              { path: "/about", label: "About" },
-              { path: "/contact", label: "Contact" }
+              { path: "/", label: "Inicio" },
+              { path: "/projects", label: "Proyecto" },
+              { path: "/about", label: "Sobre mi" },
+              { path: "/contact", label: "Contacta me" }
             ].map((item) => (
               <li key={item.path}>
                 <Link 

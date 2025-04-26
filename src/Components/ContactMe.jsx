@@ -48,6 +48,7 @@ export default function ContactMe() {
               <FiUser className="icon" />
             </div>
             <input
+              className="input"
               type="text"
               name="name"
               placeholder="Nombre completo"
@@ -62,6 +63,7 @@ export default function ContactMe() {
               <FiMail className="icon" />
             </div>
             <input
+              className="input"
               type="email"
               name="email"
               placeholder="Correo electrónico"
@@ -75,6 +77,7 @@ export default function ContactMe() {
               <FiMessageSquare className="icon" />
             </div>
             <input
+              className="input"
               type="text"
               name="title"
               placeholder="Asunto del mensaje"

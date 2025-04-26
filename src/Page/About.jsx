@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from '../Components/Navbar'
 import AboutMe from '../Components/AboutMe'
+import Footer from '../Components/Footer';
 import { Helmet } from 'react-helmet';  // <-- Importar Helmet
 import '../Static/Style/About.scss';
 
@@ -17,6 +18,7 @@ function About() {
       </Helmet>
       <Navbar/>
       <AboutMe/>
+      <Footer/>
     </div>
   )
 }
