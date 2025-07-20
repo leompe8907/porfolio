@@ -42,20 +42,64 @@
   }
 }
 
-// Grid Layout
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-  margin-bottom: 2rem;
-
+.subsection-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(52, 152, 219, 0.2);
+  
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    font-size: 1.3rem;
   }
 }
 
-// Project Card
+// ======================
+// PROYECTO DESTACADO
+// ======================
+.featured-project {
+  margin-bottom: 4rem;
+
+  .project-card.featured {
+    max-width: 100%;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    border: 2px solid rgba(52, 152, 219, 0.2);
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+// ======================
+// GRID LAYOUTS
+// ======================
+.projects-grid {
+  display: grid;
+  gap: 2rem;
+  margin-bottom: 3rem;
+
+  // Grid normal para proyecto destacado
+  &:not(.compact) {
+    grid-template-columns: 1fr;
+  }
+
+  // Grid compacto para otros proyectos
+  &.compact {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+// ======================
+// PROJECT CARDS
+// ======================
 .project-card {
   background: #ffffff;
   border-radius: 12px;
@@ -68,6 +112,21 @@
     transform: translateY(-5px);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
     border-color: rgba(52, 152, 219, 0.3);
+  }
+
+  // Versión compacta
+  &.compact {
+    .project-content {
+      padding: 1.25rem;
+    }
+
+    .project-title {
+      font-size: 1.25rem;
+    }
+
+    .project-highlights.compact {
+      margin-bottom: 1rem;
+    }
   }
 }
 
@@ -142,17 +201,20 @@
   font-size: 0.95rem;
 }
 
-// Project Highlights
+// ======================
+// PROJECT HIGHLIGHTS
+// ======================
 .project-highlights {
   margin-bottom: 1.5rem;
 
-  h4 {
+  h5 {
     font-size: 1rem;
     font-weight: 600;
     color: #2c3e50;
     margin-bottom: 0.75rem;
   }
 
+  // Lista completa (proyecto destacado)
   ul {
     list-style: none;
     padding: 0;
@@ -179,9 +241,29 @@
       }
     }
   }
+
+  // Versión compacta (tags)
+  &.compact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+
+    .highlight-tag {
+      background: rgba(39, 174, 96, 0.1);
+      color: #27ae60;
+      padding: 0.3rem 0.6rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      border: 1px solid rgba(39, 174, 96, 0.2);
+    }
+  }
 }
 
-// Technologies
+// ======================
+// TECHNOLOGIES
+// ======================
 .project-technologies {
   display: flex;
   flex-wrap: wrap;
@@ -202,12 +284,21 @@
       background: rgba(52, 152, 219, 0.2);
       transform: translateY(-1px);
     }
+
+    // Versión pequeña
+    &.small {
+      padding: 0.3rem 0.6rem;
+      font-size: 0.75rem;
+    }
   }
 }
 
-// Project Links
+// ======================
+// PROJECT LINKS
+// ======================
 .project-links {
   display: flex;
+  align-items: center;
   gap: 1rem;
   justify-content: flex-start;
 
@@ -226,6 +317,11 @@
     gap: 0.5rem;
     position: relative;
     overflow: hidden;
+
+    &.small {
+      padding: 0.5rem 1rem;
+      font-size: 0.8rem;
+    }
 
     &::before {
       content: '';
@@ -251,10 +347,6 @@
       transform: translateY(-2px);
       box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
     }
-
-    &:active {
-      transform: translateY(0);
-    }
   }
 
   .btn-github {
@@ -268,25 +360,159 @@
       transform: translateY(-2px);
       box-shadow: 0 8px 20px rgba(44, 62, 80, 0.3);
     }
-
-    &:active {
-      transform: translateY(0);
-    }
   }
 
-  @media (max-width: 480px) {
-    flex-direction: column;
-    gap: 0.75rem;
+  // Indicadores privados
+  .private-repo,
+  .private-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #7f8c8d;
+    font-size: 0.85rem;
+    font-weight: 500;
 
-    .btn-demo,
-    .btn-github {
-      text-align: center;
-      justify-content: center;
+    .icon-lock {
+      font-size: 1rem;
     }
   }
 }
 
-// Responsive adjustments
+// ======================
+// PROJECT STATUS
+// ======================
+.project-status {
+  margin-top: 1rem;
+
+  .private-indicator {
+    background: rgba(127, 140, 141, 0.1);
+    padding: 0.4rem 0.8rem;
+    border-radius: 15px;
+    border: 1px solid rgba(127, 140, 141, 0.2);
+    font-size: 0.8rem;
+  }
+}
+
+// ======================
+// PROYECTOS PROFESIONALES
+// ======================
+.professional-projects {
+  margin-bottom: 4rem;
+}
+
+// ======================
+// PROYECTOS PERSONALES
+// ======================
+.personal-projects {
+  margin-bottom: 3rem;
+}
+
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.project-item {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(52, 152, 219, 0.1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-color: rgba(52, 152, 219, 0.3);
+  }
+
+  &.personal {
+    border-left: 4px solid #3498db;
+  }
+}
+
+.project-main {
+  margin-bottom: 1rem;
+
+  .project-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+
+    .project-type {
+      background: rgba(52, 152, 219, 0.1);
+      color: #2980b9;
+      padding: 0.2rem 0.5rem;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 500;
+    }
+  }
+
+  .project-period {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-description {
+    color: #34495e;
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+}
+
+.project-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+// ======================
+// CALL TO ACTION
+// ======================
+.projects-cta {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 2rem;
+  background: rgba(52, 152, 219, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(52, 152, 219, 0.1);
+
+  p {
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin: 0;
+  }
+
+  .cta-link {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #2980b9;
+      text-decoration: underline;
+    }
+  }
+}
+
+// ======================
+// RESPONSIVE
+// ======================
 @media (max-width: 768px) {
   .project-content {
     padding: 1.25rem;
@@ -296,15 +522,28 @@
     font-size: 1.3rem;
   }
 
-  .project-technologies {
-    .tech-badge {
-      font-size: 0.75rem;
-      padding: 0.3rem 0.6rem;
+  .project-links {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: stretch;
+
+    .btn-demo,
+    .btn-github {
+      text-align: center;
+      justify-content: center;
+    }
+  }
+
+  .project-footer {
+    .project-technologies {
+      margin-bottom: 0;
     }
   }
 }
 
-// Animation for when cards enter viewport
+// ======================
+// ANIMATIONS
+// ======================
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -316,18 +555,196 @@
   }
 }
 
-.project-card {
+.project-card,
+.project-item {
   animation: fadeInUp 0.6s ease-out;
   
-  &:nth-child(2) {
-    animation-delay: 0.1s;
+  &:nth-child(2) { animation-delay: 0.1s; }
+  &:nth-child(3) { animation-delay: 0.2s; }
+  &:nth-child(4) { animation-delay: 0.3s; }
+}
+
+// Animación para las secciones
+.featured-project,
+.professional-projects,
+.personal-projects {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+
+  &.professional-projects { animation-delay: 0.2s; }
+  &.personal-projects { animation-delay: 0.4s; }
+}
+
+// ======================
+// PROJECT IMAGES STYLES
+// ======================
+
+// Contenedor de imágenes para proyectos personales
+.project-images {
+  margin: 1rem 0 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  // Si hay una sola imagen
+  &:has(img:only-child) {
+    .project-screenshot {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
   }
-  
-  &:nth-child(3) {
-    animation-delay: 0.2s;
+
+  // Si hay múltiples imágenes - carousel horizontal
+  &:has(img:not(:only-child)) {
+    display: flex;
+    justify-content: center;
+    gap: 0.9rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 0.5rem;
+
+    // Estilo de scrollbar
+    &::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #3498db;
+      border-radius: 3px;
+
+      &:hover {
+        background: #2980b9;
+      }
+    }
+
+    .project-screenshot {
+      flex: 0 0 280px; // Ancho fijo para cada imagen
+      height: 160px;
+      object-fit: cover;
+      border-radius: 6px;
+      scroll-snap-align: start;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+
+      // En móvil, hacer las imágenes un poco más grandes
+      @media (max-width: 768px) {
+        flex: 0 0 250px;
+        height: 140px;
+      }
+    }
   }
-  
-  &:nth-child(4) {
-    animation-delay: 0.3s;
+}
+
+// Alternativa: Grid layout para múltiples imágenes
+.project-images-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
+  margin: 1rem 0 1.5rem 0;
+
+  .project-screenshot {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  // Máximo 3 columnas en desktop
+  @media (min-width: 769px) {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    max-width: 100%;
+    
+    &:has(img:nth-child(3)) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  // En móvil, máximo 2 columnas
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+
+    .project-screenshot {
+      height: 120px;
+    }
+  }
+}
+
+// Estilo para imagen destacada (si quieres mostrar solo la primera)
+.project-featured-image {
+  margin: 1rem 0 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+
+  .project-screenshot {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  // Indicador si hay más imágenes
+  &::after {
+    content: '+' attr(data-count) ' más';
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 0.3rem 0.6rem;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+}
+
+// ======================
+// RESPONSIVE ADJUSTMENTS
+// ======================
+
+@media (max-width: 768px) {
+  .project-images {
+    margin: 0.75rem 0 1rem 0;
+
+    &:has(img:only-child) {
+      .project-screenshot {
+        height: 160px;
+      }
+    }
+  }
+}
+
+// ======================
+// HOVER EFFECTS
+// ======================
+
+.project-item.personal:hover {
+  .project-screenshot {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
 }

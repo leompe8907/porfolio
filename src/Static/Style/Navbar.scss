@@ -153,7 +153,7 @@ $mobile-breakpoint: 768px;
   
   &.show {
     .menu-icon {
-      background: transparent;
+      background: #000;
       
       &::before {
         transform: rotate(45deg);
