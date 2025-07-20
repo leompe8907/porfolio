@@ -39,7 +39,7 @@ $light-bg: #f9f9f9;
   .profile-photo-container {
     position: relative;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 1rem;
     transform-style: preserve-3d;
     padding-top: 0; // Elimina padding adicional
     padding-bottom: 2rem;
@@ -48,10 +48,11 @@ $light-bg: #f9f9f9;
     
     .profile-photo {
       width: 100%;
+      height: 30em;
       border-radius: 10px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       aspect-ratio: 1/1;
-      object-fit: cover;
+      object-fit: fill;
     }
     
     .skills-container {

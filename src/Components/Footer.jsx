@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiGithub, FiLinkedin, FiMail, FiTwitter } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
 import '../Static/Style/Footer.scss';
 
 const Footer = () => {
@@ -26,18 +26,10 @@ const Footer = () => {
             <FiLinkedin className="social-icon" />
           </a>
           <a
-            href="mailto:tuemail@ejemplo.com"
+            href="leonardamaya8907@hotmail.com"
             aria-label="Enviar email"
           >
             <FiMail className="social-icon" />
-          </a>
-          <a
-            href="https://twitter.com/tuusuario"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Twitter"
-          >
-            <FiTwitter className="social-icon" />
           </a>
         </div>
 

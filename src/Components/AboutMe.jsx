@@ -1,13 +1,14 @@
-import React from 'react';
-import ProfilePhoto from '../Static/Img/LD.png';
+import ProfilePhoto from '../Static/Img/Leo.jpg';
 import SkillBadge from '../Components/SkillBadge';
 
 import "../Static/Style/AboutMe.scss"
 
 function AboutMe() {
   const skills = [
-    'Python', 'Django', 'React', 'PostgreSQL',
-    'Chart.js', 'REST APIs', 'Docker', 'Git'
+    'Python', 'Django', 'React JS', 'PostgreSQL',
+    'Chart.js', 'APIs REST', 'Docker', 'Git', 'HTML', 
+    'CSS', 'Boostrap', 'MaterialUI', 'JavaScript',
+    'SQL', 'Django Rest Framework', 'Power BI'
   ];
 
   return (
@@ -33,28 +34,44 @@ function AboutMe() {
           
           <div className="about-text">
             <p className="intro-paragraph">
-              Desarrollador Full Stack especializado en crear soluciones digitales eficientes y escalables.
+              Soy Leonard, un desarrollador Full Stack apasionado por crear soluciones digitales eficientes y escalables. 
+              Con más de 2 años de experiencia profesional, me especializo en transformar ideas complejas en aplicaciones 
+              web funcionales y centradas en el usuario.
             </p>
             
-            <h3 className="subsection-title">Mi Experiencia</h3>
+            <h3 className="subsection-title">Mi Trayectoria</h3>
             <p>
-              En mi rol en <strong>Bromteck</strong>, lidero y desarrollo una aplicación de telemetría
+              Actualmente trabajo como <strong>Desarrollador Full Stack en Bromteck</strong>, donde he tenido la 
+              oportunidad de liderar proyectos de alta complejidad como la herramienta de Telemetría, que procesa 
+              más de 5,000 registros diarios y ha optimizado las consultas en un 40%. Mi experiencia abarca desde 
+              el desarrollo de APIs REST con Django y PostgreSQL hasta la creación de interfaces interactivas con 
+              React y Chart.js.
             </p>
-            <ul className="experience-list">
-              <li>API REST con Django y PostgreSQL</li>
-              <li>Visualización de datos con React y Chart.js</li>
-              <li>Integraciones con dispositivos IoT</li>
-            </ul>
             
             <h3 className="subsection-title">Mi Enfoque</h3>
             <p>
-              Combino mis habilidades técnicas con mi formación en <strong>Administración de Empresas</strong> para crear soluciones que no solo son técnicamente sólidas, sino también alineadas con los objetivos del negocio.
+              Lo que me diferencia es mi capacidad de combinar mis habilidades técnicas con mi formación en 
+              <strong> Administración de Empresas</strong>. Esta perspectiva única me permite no solo desarrollar 
+              código de calidad, sino crear soluciones que realmente aporten valor al negocio. Me enfoco en la 
+              optimización continua, las pruebas rigurosas y la mejora de la experiencia del usuario en cada proyecto.
             </p>
             
             <div className="current-focus">
-              <h3 className="subsection-title">Actualmente...</h3>
+              <h3 className="subsection-title">Crecimiento Continuo</h3>
               <p>
-                Estoy profundizando en <strong>ciberseguridad</strong> y mejores prácticas para desarrollo seguro.
+                Creo firmemente en la mejora continua. Actualmente estoy profundizando mis conocimientos en 
+                <strong> ciberseguridad</strong> y mejores prácticas para desarrollo seguro, siempre buscando 
+                mantenerme actualizado con las últimas tecnologías y tendencias del sector.
+              </p>
+            </div>
+
+            <div className="current-focus">
+              <h3 className="subsection-title">Mis Valores</h3>
+              <p>
+                La <strong>proactividad</strong>, la <strong>comunicación efectiva</strong> y el 
+                <strong> trabajo en equipo</strong> son pilares fundamentales en mi forma de trabajar. 
+                Disfruto colaborando en equipos multidisciplinarios y enfrentando nuevos desafíos que 
+                me permitan seguir creciendo profesionalmente.
               </p>
             </div>
           </div>

@@ -7,7 +7,7 @@ function Centro() {
       <div className="hero-content">
         <h1 id="hero-heading" className="hero-title">
           <span className="hero-greeting">Hola, Soy</span>
-          <span className="hero-name">Leonard Amaya</span>
+          <span className="hero-name">Leonard Amaya D.</span>
         </h1>
         
         <p className="hero-subtitle">
