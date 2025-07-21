@@ -1,8 +1,8 @@
 import React from 'react';
 import "../Static/Style/Projects.scss"
-import aventura1 from '../Static/Img/aventura1.png'
-import aventura2 from '../Static/Img/aventura2.png'
-import aventura3 from '../Static/Img/aventura3.png'
+import aventura1 from '../Static/Img/aventura1.webp'
+import aventura2 from '../Static/Img/aventura2.webp'
+import aventura3 from '../Static/Img/aventura3.webp'
 
 function Projects() {
   // Proyecto principal/destacado

@@ -1,4 +1,4 @@
-import ProfilePhoto from '../Static/Img/Leo.jpg';
+import ProfilePhoto from '../Static/Img/Leo.webp';
 import SkillBadge from '../Components/SkillBadge';
 
 import "../Static/Style/AboutMe.scss"
