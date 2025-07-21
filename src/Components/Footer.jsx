@@ -26,7 +26,7 @@ const Footer = () => {
             <FiLinkedin className="social-icon" />
           </a>
           <a
-            href="leonardamaya8907@hotmail.com"
+            href="mailto:leonardamaya8907@hotmail.com"
             aria-label="Enviar email"
           >
             <FiMail className="social-icon" />

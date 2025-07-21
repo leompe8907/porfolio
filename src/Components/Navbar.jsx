@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { LinkedIn, GitHub } from '@mui/icons-material';
+import { ContactMail,LinkedIn, GitHub } from '@mui/icons-material';
 import L from "../Static/Img/LD.png";
 import "../Static/Style/Navbar.scss";
 
@@ -87,6 +87,7 @@ export default function Navbar() {
 
         <div className="social-links">
           {[
+            { icon: <ContactMail />, url: "mailto:leonardamaya8907@hotmail.com"},
             { icon: <LinkedIn />, url: "https://www.linkedin.com/in/leonardamaya/" },
             { icon: <GitHub />, url: "https://github.com/leompe8907" }
           ].map((social, index) => (
