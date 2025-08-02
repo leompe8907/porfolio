@@ -124,6 +124,10 @@ $light-bg: #f9f9f9;
         align-items: flex-start;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
+
+        .about-text .paragraph{
+          padding: 0 1.5rem
+        }
       }
     }
   

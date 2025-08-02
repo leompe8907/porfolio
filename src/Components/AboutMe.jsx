@@ -40,7 +40,7 @@ function AboutMe() {
             </p>
             
             <h3 className="subsection-title">Mi Trayectoria</h3>
-            <p>
+            <p className='paragraph'>
               Actualmente trabajo como <strong>Desarrollador Full Stack en Bromteck</strong>, donde he tenido la 
               oportunidad de liderar proyectos de alta complejidad como la herramienta de Telemetría, que procesa 
               más de 5,000 registros diarios y ha optimizado las consultas en un 40%. Mi experiencia abarca desde 
@@ -49,7 +49,7 @@ function AboutMe() {
             </p>
             
             <h3 className="subsection-title">Mi Enfoque</h3>
-            <p>
+            <p className='paragraph'>
               Lo que me diferencia es mi capacidad de combinar mis habilidades técnicas con mi formación en 
               <strong> Administración de Empresas</strong>. Esta perspectiva única me permite no solo desarrollar 
               código de calidad, sino crear soluciones que realmente aporten valor al negocio. Me enfoco en la 

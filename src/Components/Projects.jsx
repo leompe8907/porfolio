@@ -10,7 +10,7 @@ function Projects() {
     id: 1,
     title: "UDID",
     company: "Bromteck",
-    period: "Jun 2024 - Presente",
+    period: "Jun 2025 - Presente",
     description: "Funcionalidad externa que permite que la aplicacion de video, iniciar sesion sin la necesidad de que usuario deba introducir las credenciales",
     technologies: ["Django", "PostgreSQL", "Django Rest-Framework", "cryptography"],
     highlights: [

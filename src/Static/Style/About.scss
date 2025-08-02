@@ -59,6 +59,10 @@ $section-spacing: 4rem;
       padding-top: 2rem;
       padding-bottom: 2rem;
       
+      .intro-paragraph, .paragraph{
+        padding: 0 1.5rem;
+        text-align: justify;
+      }
     }
   }
 }
